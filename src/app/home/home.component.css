@@ -1,0 +1,19 @@
+.background-home {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 90vh;
+}
+
+.form {
+    background-color: #072121;
+    border-radius: 20px;
+    box-sizing: border-box;
+    height:fit-content;
+    padding: 20px;
+    width: 320px;
+}
+
+.welcome-text {
+    color: #eee;
+}

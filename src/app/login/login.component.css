@@ -33,18 +33,6 @@
     width: 100%;
 }
 
-.placeholder {
-    color: #65657b;
-    font-family: sans-serif;
-    left: 20px;
-    line-height: 14px;
-    pointer-events: none;
-    position: absolute;
-    transform-origin: 0 50%;
-    transition: transform 200ms, color 200ms;
-    top: 20px;
-}
-
 .signin {
     font-size: 24px;
     color: #eee;
