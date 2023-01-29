@@ -6,8 +6,12 @@ ul {
   background-color: #072121;
 }
 
-li {
+.li-float-l {
   float: left;
+}
+
+.li-float-r {
+  float: right;
 }
 
 li a {
