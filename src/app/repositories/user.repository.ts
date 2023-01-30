@@ -5,7 +5,7 @@ export class UserRepository {
     private static repo: UserRepository;
 
     private constructor() {
-        this.users = [new User('email@gmail.com', 'admin', 'password')]
+        this.users = [new User('admin@gmail.com', 'admin', 'password')]
     }
     
     public static getInstance(): UserRepository {

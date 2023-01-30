@@ -10,6 +10,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { RegisterService } from './services/register.service';
 import { UserRepository } from './repositories/user.repository';
 import { FormsModule } from '@angular/forms';
+import { RecipiesListComponent } from './recipies-list/recipies-list.component';
+import { RecipieComponent } from './recipie/recipie.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     RegisterComponent,
     LoginComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    RecipiesListComponent,
+    RecipieComponent
   ],
   imports: [
     BrowserModule,
