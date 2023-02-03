@@ -8,10 +8,10 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { RegisterService } from './services/register.service';
-import { UserRepository } from './repositories/user.repository';
 import { FormsModule } from '@angular/forms';
 import { RecipiesListComponent } from './recipies-list/recipies-list.component';
-import { RecipieComponent } from './recipie/recipie.component';
+import { RecipieComponent } from './recipies-list/recipie/recipie.component';
+import { RecipiesService } from './services/recipies.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +30,7 @@ import { RecipieComponent } from './recipie/recipie.component';
   ],
   providers: [
     RegisterService, 
+    RecipiesService
   ],
   bootstrap: [AppComponent]
 })

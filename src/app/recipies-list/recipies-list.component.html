@@ -1,1 +1,3 @@
-<p>recipies-list works!</p>
+<div *ngFor="let rec of recipies">
+    <app-recipie [recipe]="rec"></app-recipie>
+</div>

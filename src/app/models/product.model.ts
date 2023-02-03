@@ -1,11 +1,11 @@
 
 export class Product {
     
-    constructor(private _id: number, private _name: string) {
+    constructor(private _quantity: string, private _name: string) {
     }
 
-    public get id() {
-        return this._id;
+    public get quantity() {
+        return this._quantity;
     }
 
     public get name() {
