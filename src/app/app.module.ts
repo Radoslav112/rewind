@@ -9,8 +9,8 @@ import { LoginComponent } from './login/login.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { RegisterService } from './services/register.service';
 import { FormsModule } from '@angular/forms';
-import { RecipiesListComponent } from './recipies-list/recipies-list.component';
-import { RecipieComponent } from './recipies-list/recipie/recipie.component';
+import { RecipiesListComponent } from './recipies-list/recipes-list.component';
+import { RecipeComponent } from './recipies-list/recipe/recipe.component';
 import { RecipiesService } from './services/recipies.service';
 
 @NgModule({
@@ -21,7 +21,7 @@ import { RecipiesService } from './services/recipies.service';
     LoginComponent,
     ErrorPageComponent,
     RecipiesListComponent,
-    RecipieComponent
+    RecipeComponent
   ],
   imports: [
     BrowserModule,

@@ -23,4 +23,14 @@ export class RecipeRepository {
     public getRecipies(): Recipe[] {
         return this.recipies;
     }
+
+    public getRecipeById(id: string): Recipe {
+        const res = this.recipies.find(el => {
+            return (el.id.toString())===id;
+        });
+        if(res) {
+            return res;
+        } 
+        return new Recipe(0,'',[],'');
+    }
 }

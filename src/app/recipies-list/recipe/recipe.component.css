@@ -2,12 +2,6 @@ p{
     color: #eee;
 }
 
-.background-recipe {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
-
 .form {
     background-color: #072121;
     border-radius: 20px;
