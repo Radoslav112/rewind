@@ -1,0 +1,22 @@
+p{
+    color: #eee;
+}
+
+.background-recipe {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    background-color: #072121;
+    border-radius: 20px;
+    box-sizing: border-box;
+    height:fit-content;
+    padding: 20px;
+    width: 320px;
+}
+
+.ingredients {}
+
+.directions {}
