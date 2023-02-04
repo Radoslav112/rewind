@@ -1,3 +1,34 @@
+.recipe-list-background{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 90vh;
+}
+
+.recipe-list {
+    background-color: #072121;
+    border-radius: 20px;
+    box-sizing: border-box;
+    height: fit-content;
+    padding: 20px;
+    width: 500px;
+}
+
 .recipe {
-    padding-top: 20px;
+    background-color: #1E2929;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 18px;
+    height: 100%;
+    outline: 0;
+    padding: 4px 20px 0;
+    width: 100%;
+}
+
+.recipe-name{
+    font-size: 24px;
+    color: #eee;
+    text-align: center;
 }
