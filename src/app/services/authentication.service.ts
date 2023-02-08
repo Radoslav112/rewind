@@ -14,7 +14,7 @@ export class AuthenticationService {
     login(username: string, password: string) {
         let res = this.users.contains(username, password)
         res ? this.loggedUser$.next(res) : this.error$.next("User with this username and password does not exist.");
-    
+
         setTimeout(() => this.logout(), 60000); // user will logout automatically after 60 sec
     }
 
@@ -24,5 +24,9 @@ export class AuthenticationService {
 
     public isLoggedIn(): boolean {
         return !!this.loggedUser$.getValue();
+    }
+
+    public isAuthenticated(): boolean {
+        return this.isLoggedIn();
     }
 }

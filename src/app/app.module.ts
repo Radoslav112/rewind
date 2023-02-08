@@ -13,6 +13,7 @@ import { RecipiesListComponent } from './recipies-list/recipes-list.component';
 import { RecipeComponent } from './recipies-list/recipe/recipe.component';
 import { RecipiesService } from './services/recipies.service';
 import { AuthenticationService } from './services/authentication.service';
+import { AuthorizationGuard } from './services/authorization-guard';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AuthenticationService } from './services/authentication.service';
   providers: [
     RegisterService, 
     RecipiesService,
-    AuthenticationService
+    AuthenticationService,
+    AuthorizationGuard
   ],
   bootstrap: [AppComponent]
 })
