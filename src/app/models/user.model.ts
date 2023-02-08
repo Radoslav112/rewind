@@ -1,10 +1,18 @@
 
 export class User {
-    constructor(private email: string, private username: string, private password: string) {
+    constructor(private _email: string, private _username: string, private _password: string) {
 
     }
 
-    public getEmail() {
-        return this.email;
+    get email() {
+        return this._email;
+    }
+
+    get username() {
+        return this._username;
+    }
+
+    get password() {
+        return this._password;
     }
 }

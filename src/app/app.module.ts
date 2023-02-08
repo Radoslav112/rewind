@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { RecipiesListComponent } from './recipies-list/recipes-list.component';
 import { RecipeComponent } from './recipies-list/recipe/recipe.component';
 import { RecipiesService } from './services/recipies.service';
+import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { RecipiesService } from './services/recipies.service';
   ],
   providers: [
     RegisterService, 
-    RecipiesService
+    RecipiesService,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })

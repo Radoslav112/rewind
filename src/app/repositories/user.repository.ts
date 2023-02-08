@@ -5,11 +5,11 @@ export class UserRepository {
     private static repo: UserRepository;
 
     private constructor() {
-        this.users = [new User('admin@gmail.com', 'admin', 'password')]
+        this.users = [new User('admin@gmail.com', 'Admin', 'password')]
     }
-    
+
     public static getInstance(): UserRepository {
-        if(!this.repo) {
+        if (!this.repo) {
             this.repo = new UserRepository();
         }
 
@@ -21,11 +21,20 @@ export class UserRepository {
     }
 
     public containsUserWithEmail(email: string): boolean {
-        let flag = false;
+        let res = false;
         this.users.forEach(user => {
-            if(user.getEmail()===email)flag = true;
+            if (user.email === email) res = true;
         })
 
-        return flag;
+        return res;
+    }
+
+    public contains(username: string, password: string): User | null {
+        let res: User | null = null;
+        this.users.forEach(user => {
+            if (user.username === username && user.password === password) res = user;
+        })
+
+        return res;
     }
 }
