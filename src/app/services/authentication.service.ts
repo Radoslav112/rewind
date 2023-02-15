@@ -5,7 +5,7 @@ import { UserRepository } from "../repositories/user.repository";
 
 @Injectable()
 export class AuthenticationService {
-    loggedUser$ = new BehaviorSubject<User | null>(null);
+    loggedUser$ = new BehaviorSubject<User | null>(new User('Admin','Admin',''));
     error$ = new Subject<string>;
     users = UserRepository.getInstance();
 

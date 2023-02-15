@@ -1,20 +1,33 @@
-.recipe-list-background{
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    height: 90vh;
+.container {
+    display: grid;
+    grid-template-columns: 12% auto auto 12%;
 }
 
-.recipe-list {
+.content {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column: 2 / 4;
+
     background-color: #072121;
     border-radius: 20px;
     box-sizing: border-box;
-    height: fit-content;
     padding: 20px;
-    width: 500px;
+    margin: 40px 0px 0px 0px;
+    height:fit-content;
+    width: auto;
+}
+
+.recipe-list {
+    grid-column: 1 / 2;
+
+    border-radius: 20px;
+    box-sizing: border-box;
+    height: fit-content;
 }
 
 .recipe {
+    grid-column: 2 / -1;
+
     background-color: #1E2929;
     border-radius: 12px;
     border: 0;
