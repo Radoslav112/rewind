@@ -1,17 +1,19 @@
-.background-home {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    height: 90vh;
+.container {
+    display: grid;
+    grid-template-columns: 12% auto 12%;
 }
 
-.form {
+.content {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+
     background-color: #072121;
     border-radius: 20px;
     box-sizing: border-box;
-    height:fit-content;
     padding: 20px;
-    width: 400px;
+    margin: 40px;
+    height:fit-content;
+    width: auto;
 }
 
 .welcome {
@@ -20,8 +22,9 @@
     text-align: center;
 }
 
-.welcome-text {
+.task {
     font-size: 24px;
     color: #eee;
     text-align: center;
 }
+
