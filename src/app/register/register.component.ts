@@ -20,11 +20,18 @@ export class RegisterComponent implements OnInit {
 
   onRegisterClicked() {
     try {
-      this.registerService.register(this.email,this.username,this.password,this.repeatPassword);
+      this.checkPasswords(this.password, this.repeatPassword);
+      this.registerService.register(this.email, this.username, this.password);
       alert('You are ready to login into your new account.');
       this.location.back();
     } catch (error) {
       alert(error);
+    }
+  }
+
+  private checkPasswords(password: string, repeatPassword: string) {
+    if (password !== repeatPassword) {
+      throw new Error("Passwords does not match.");
     }
   }
 }

@@ -10,16 +10,9 @@ export class RegisterService {
         this.userRepository = UserRepository.getInstance();
     }
 
-    public register(email: string, username: string, password: string, repeatPassword: string) {
-        this.checkPasswords(password, repeatPassword);
+    public register(email: string, username: string, password: string) {
         this.checkIsEmailTaken(email);
         this.userRepository.add(new User(email, username, password));
-    }
-
-    private checkPasswords(password: string, repeatPassword: string) {
-        if (password !== repeatPassword) {
-            throw new Error("Passwords does not match.");
-        }
     }
 
     private checkIsEmailTaken(email: string) {
