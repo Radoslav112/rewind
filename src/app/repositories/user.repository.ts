@@ -21,20 +21,18 @@ export class UserRepository {
     }
 
     public containsUserWithEmail(email: string): boolean {
-        let res = false;
-        this.users.forEach(user => {
-            if (user.email === email) res = true;
+        const res = this.users.find(el => {
+            el.email === email;
         })
 
-        return res;
+        return res ? true : false;
     }
 
     public contains(username: string, password: string): User | null {
-        let res: User | null = null;
-        this.users.forEach(user => {
-            if (user.username === username && user.password === password) res = user;
+        const res = this.users.find(el => {
+            el.username === username && el.password === password;
         })
 
-        return res;
+        return res ? res : null;
     }
 }

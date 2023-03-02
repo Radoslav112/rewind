@@ -22,8 +22,6 @@ export class LoginComponent implements OnInit, OnDestroy {
       next: (user) => {
         if (!!user) {
           this.location.back();
-        } else {
-
         }
       }
     });

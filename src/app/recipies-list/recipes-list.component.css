@@ -13,7 +13,7 @@
     box-sizing: border-box;
     padding: 20px;
     margin: 40px 0px 0px 0px;
-    height:fit-content;
+    height: fit-content;
     width: auto;
 }
 
@@ -40,8 +40,28 @@
     width: 100%;
 }
 
-.recipe-name{
+.recipe-name {
     font-size: 24px;
     color: #eee;
     text-align: center;
 }
+
+.recipe-name a {
+    text-decoration: none;
+    color: #eee;
+}
+
+/* .recipe-name a:visited {
+    text-decoration: none;
+    color: #eee;
+}
+
+.recipe-name a:hover {
+    text-decoration: none;
+    color: #eee;
+}
+
+.recipe-name a:active {
+    text-decoration: none;
+    color: #eee;
+} */
