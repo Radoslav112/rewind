@@ -1,21 +1,57 @@
-<div class="background-register">
+<form (ngSubmit)="onRegisterClicked()" #f="ngForm">
+    <div class="background-register">
     <div class="form">
         <div class="register-text">Create your new account!</div>
 
         <div class="input-container m30t">
-            <input class="input" type="text" placeholder="E-mail" [(ngModel)]="email">
+            <input 
+            class="input" 
+            type="text" 
+            placeholder="E-mail" 
+            ngModel
+            name="email"
+            required
+            email
+            #email="ngModel">
         </div>
+        <p *ngIf="email.invalid && email.touched">please dont leave email empty</p>
         <div class="input-container m20t">
-            <input class="input" type="text" placeholder="Username" [(ngModel)]="username">
+            <input 
+            class="input" 
+            type="text" 
+            placeholder="Username" 
+            ngModel
+            name="username"
+            required
+            #username="ngModel">
         </div>
+        <p *ngIf="username.invalid && username.touched">please dont leave username empty</p>
         <div class="input-container m20t">
-            <input class="input" type="password" placeholder="Password" [(ngModel)]="password">
+            <input 
+            class="input" 
+            type="password" 
+            placeholder="Password" 
+            ngModel
+            name="password"
+            required
+            #password="ngModel">
         </div>
+        <p *ngIf="password.invalid && password.touched">please dont leave password empty</p>
         <div class="input-container m20t">
-            <input class="input" type="password" placeholder="Repeat password" [(ngModel)]="repeatPassword">
+            <input 
+            class="input" 
+            type="password" 
+            placeholder="Repeat password" 
+            ngModel
+            name="repeatPassword"
+            required
+            #repeatPassword="ngModel">
         </div>
+        <p *ngIf="repeatPassword.invalid && repeatPassword.touched">please dont leave email empty</p>
         <div class="button-container m30t m10b">
-            <button class="button" (click)="onRegisterClicked()">Register</button>
+            <button class="button" type="submit" [disabled]="f.invalid">Register</button>
         </div>
+
     </div>
 </div>
+</form>

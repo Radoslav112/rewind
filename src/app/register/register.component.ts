@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { RegisterService } from '../services/register.service';
 import { Location } from "@angular/common";
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -12,6 +13,7 @@ export class RegisterComponent implements OnInit {
   username = '';
   password = '';
   repeatPassword = '';
+  @ViewChild('f') registerForm: NgForm | undefined;
 
   constructor(private registerService: RegisterService, private location: Location) { }
 
@@ -19,14 +21,17 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegisterClicked() {
-    try {
-      this.checkPasswords(this.password, this.repeatPassword);
-      this.registerService.register(this.email, this.username, this.password);
-      alert('You are ready to login into your new account.');
-      this.location.back();
-    } catch (error) {
-      alert(error);
-    }
+    console.log(this.registerForm);
+
+
+    // try {
+    //   this.checkPasswords(this.password, this.repeatPassword);
+    //   this.registerService.register(this.email, this.username, this.password);
+    //   alert('You are ready to login into your new account.');
+    //   this.location.back();
+    // } catch (error) {
+    //   alert(error);
+    // }
   }
 
   private checkPasswords(password: string, repeatPassword: string) {
