@@ -59,6 +59,10 @@
     width: 100%;
 }
 
+.button.disabled {
+    background-color: #4ebdbd;
+}
+
 .m20t {
     margin-top: 20px;
 }
@@ -69,4 +73,8 @@
 
 .m10b {
     margin-bottom: 10px;
+}
+
+.ng-invalid.ng-touched {
+    border: 1px solid red;
 }

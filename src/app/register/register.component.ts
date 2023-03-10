@@ -9,10 +9,6 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  email = '';
-  username = '';
-  password = '';
-  repeatPassword = '';
   @ViewChild('f') registerForm: NgForm | undefined;
 
   constructor(private registerService: RegisterService, private location: Location) { }
@@ -21,17 +17,14 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegisterClicked() {
-    console.log(this.registerForm);
-
-
-    // try {
-    //   this.checkPasswords(this.password, this.repeatPassword);
-    //   this.registerService.register(this.email, this.username, this.password);
-    //   alert('You are ready to login into your new account.');
-    //   this.location.back();
-    // } catch (error) {
-    //   alert(error);
-    // }
+    try {
+      this.checkPasswords(this.registerForm?.value.usernamepassword, this.registerForm?.value.usernamerepeatPassword);
+      this.registerService.register(this.registerForm?.value.usernameemail, this.registerForm?.value.usernameusername, this.registerForm?.value.usernamepassword);
+      alert('You are ready to login into your new account.');
+      this.location.back();
+    } catch (error) {
+      alert(error);
+    }
   }
 
   private checkPasswords(password: string, repeatPassword: string) {

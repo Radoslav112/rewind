@@ -49,7 +49,7 @@
         </div>
         <p *ngIf="repeatPassword.invalid && repeatPassword.touched">please dont leave email empty</p>
         <div class="button-container m30t m10b">
-            <button class="button" type="submit" [disabled]="f.invalid">Register</button>
+            <button [ngClass]="{'button':true, 'disabled':(f.invalid && f.touched)}" type="submit" [disabled]="f.invalid">Register</button>
         </div>
 
     </div>
