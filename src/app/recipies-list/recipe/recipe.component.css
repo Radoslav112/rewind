@@ -1,0 +1,15 @@
+p{
+    color: #eee;
+}
+
+.form {
+    background-color: #072121;
+    border-radius: 20px;
+    box-sizing: border-box;
+    height:fit-content;
+    padding: 20px;
+}
+
+.ingredients {}
+
+.directions {}

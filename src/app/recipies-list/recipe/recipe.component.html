@@ -1,0 +1,9 @@
+<div class="form">
+    <p>{{recipe.name}}</p>
+    <div class="ingredients">
+        <p *ngFor="let product of recipe.ingredients">{{product.name}} {{product.quantity}}</p>
+    </div>
+    <div class="directions">
+        <p>{{recipe.directions}}</p>
+    </div>
+</div>
