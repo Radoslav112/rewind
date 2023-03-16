@@ -30,7 +30,7 @@ export class UserRepository {
 
     public contains(username: string, password: string): User | null {
         const res = this.users.find(el => {
-            el.username === username && el.password === password;
+            return el.username === username && el.password === password;
         })
 
         return res ? res : null;

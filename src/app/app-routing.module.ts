@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -13,11 +14,11 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'recipes', component: RecipiesListComponent, canActivateChild: [AuthorizationGuard] , children:[
     { path: ':id', component: RecipeComponent},
+    { path: 'edit/:id', component: EditRecipeComponent},
   ] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'page-not-found', component: ErrorPageComponent },
-  { path: '**', redirectTo: 'page-not-found' },
 ];
 
 @NgModule({

@@ -6,4 +6,7 @@
     <div class="directions">
         <p>{{recipe.directions}}</p>
     </div>
+    <div>
+        <button [routerLink]="['../edit',recipe.id]">Edit</button>
+    </div>
 </div>

@@ -8,12 +8,13 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { RegisterService } from './services/register.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipiesListComponent } from './recipies-list/recipes-list.component';
 import { RecipeComponent } from './recipies-list/recipe/recipe.component';
 import { RecipiesService } from './services/recipies.service';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthorizationGuard } from './services/authorization-guard';
+import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +24,14 @@ import { AuthorizationGuard } from './services/authorization-guard';
     LoginComponent,
     ErrorPageComponent,
     RecipiesListComponent,
-    RecipeComponent
+    RecipeComponent,
+    EditRecipeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     RegisterService, 
