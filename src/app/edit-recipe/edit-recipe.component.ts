@@ -64,5 +64,7 @@ export class EditRecipeComponent implements OnInit {
       arr.push(new Product(element.ingredientQuantity,element.ingredientName));
     });
     const r = new Recipe(this.recipe.id, this.editForm.value.recipeName, arr, this.editForm.value.description);
+  
+    this.recipeService.updateRecipe(r);
   }
 }

@@ -17,4 +17,16 @@ export class RecipiesService {
         const res = this.recipes$.getValue().find(recipe => recipe.id===+id) // here no return is needed
         return res? res : new Recipe(0,'',[],'');
     }
+
+    updateRecipe(recipe: Recipe) {
+        const index = this.recipes$.getValue().findIndex((r)=>r.id===recipe.id);
+        if(index!==-1) {
+            let recipesCopy:Recipe[] = {...(this.recipes$.getValue())}
+            recipesCopy[index] = recipe;
+            this.recipes$.next(recipesCopy);
+        } 
+        else {
+            throw new Error(`Recipe with id ${recipe.id} does not exist`);
+        }
+    }
 }
