@@ -19,9 +19,11 @@ export class RecipiesService {
     }
 
     updateRecipe(recipe: Recipe) {
-        const index = this.recipes$.getValue().findIndex((r)=>r.id===recipe.id);
+        let rec = this.recipes$.getValue();
+        console.log(rec)
+        const index = rec.findIndex((r)=>r.id===recipe.id);
         if(index!==-1) {
-            let recipesCopy:Recipe[] = {...(this.recipes$.getValue())}
+            let recipesCopy:Recipe[] = [...(this.recipes$.getValue())]
             recipesCopy[index] = recipe;
             this.recipes$.next(recipesCopy);
         } 

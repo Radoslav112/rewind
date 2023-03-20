@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Product } from '../models/product.model';
 import { Recipe } from '../models/recipe.model';
@@ -17,7 +17,7 @@ export class EditRecipeComponent implements OnInit {
   recipeSubscription?: Subscription;
   ingredients: Product[] = this.recipe.ingredients;
 
-  constructor(private route: ActivatedRoute, private recipeService: RecipiesService) { }
+  constructor(private route: ActivatedRoute, private recipeService: RecipiesService, private router: Router) { }
 
   ngOnInit(): void {
     this.recipe = this.recipeService.getRecipeByID(this.route.snapshot.params['id']);
@@ -66,5 +66,6 @@ export class EditRecipeComponent implements OnInit {
     const r = new Recipe(this.recipe.id, this.editForm.value.recipeName, arr, this.editForm.value.description);
   
     this.recipeService.updateRecipe(r);
+    this.router.navigate(['recipes',this.recipe.id]);
   }
 }
