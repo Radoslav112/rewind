@@ -1,7 +1,8 @@
 <div class="container">
+    <div class="input-container"><input type="text" [(ngModel)]="filter" class="input" placeholder="filter"></div>
     <div class="content" [ngClass]="setContainerStyle()">
         <div class="recipe-list">
-            <div *ngFor="let rec of recipies" class="recipe">
+            <div *ngFor="let rec of recipies | recipeFilter: filter" class="recipe">
                 <div class="recipe-name recipe-selected" (click)="onRecipeClicked(rec)">{{rec.name}}</div>
             </div>
         </div>

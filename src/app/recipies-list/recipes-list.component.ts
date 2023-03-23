@@ -14,6 +14,7 @@ export class RecipiesListComponent implements OnInit, OnDestroy {
   recipesSubscription?: Subscription;
   recipeSelected: boolean = false;
   selectedRecipeSubscription?: Subscription;
+  filter:string = '';
 
   constructor(private recipiesService: RecipiesService, public activatedRoute: ActivatedRoute, private router: Router) { }
 

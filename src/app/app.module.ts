@@ -15,6 +15,7 @@ import { RecipiesService } from './services/recipies.service';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthorizationGuard } from './services/authorization-guard';
 import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
+import { RecipeFilterPipe } from './recipies-list/recipe-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
     ErrorPageComponent,
     RecipiesListComponent,
     RecipeComponent,
-    EditRecipeComponent
+    EditRecipeComponent,
+    RecipeFilterPipe
   ],
   imports: [
     BrowserModule,
