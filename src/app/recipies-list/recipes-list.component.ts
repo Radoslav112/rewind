@@ -10,25 +10,36 @@ import { RecipiesService } from '../services/recipies.service';
   styleUrls: ['./recipes-list.component.css']
 })
 export class RecipiesListComponent implements OnInit, OnDestroy {
-  recipies = this.recipiesService.recipes$.getValue();
+  recipies = this.recipiesService.getRecipes();
   recipesSubscription?: Subscription;
+  recipeSelected: boolean = false;
+  selectedRecipeSubscription?: Subscription;
 
-  constructor(private recipiesService: RecipiesService, public route: ActivatedRoute) { }
+  constructor(private recipiesService: RecipiesService, public activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.recipesSubscription = this.recipiesService.recipes$.subscribe({
-      next:(recipes)=>{
-         this.recipies=recipes;
+      next: (recipes) => {
+        this.recipies = recipes;
       }
     })
   }
 
-  ngOnDestroy(): void {
-    this.recipesSubscription?.unsubscribe();
+  setContainerStyle() {
+    console.log(this.activatedRoute.url)
+    return {
+      'recipe-selected': this.recipeSelected === true,
+      'recipe-not-selected': this.recipeSelected === false
+    };
   }
 
-  isRecipeOpenned(): boolean {
-    console.log(this.route);
-    return false;
+  onRecipeClicked(recipe: Recipe) {
+    this.recipeSelected = true;
+    this.router.navigate(['recipes',recipe.id])
+  }
+
+  ngOnDestroy(): void {
+    this.recipesSubscription?.unsubscribe();
+    this.selectedRecipeSubscription?.unsubscribe();
   }
 }

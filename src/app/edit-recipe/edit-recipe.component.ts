@@ -66,6 +66,6 @@ export class EditRecipeComponent implements OnInit {
     const r = new Recipe(this.recipe.id, this.editForm.value.recipeName, arr, this.editForm.value.description);
   
     this.recipeService.updateRecipe(r);
-    this.router.navigate(['recipes',this.recipe.id]);
+    this.router.navigate(['recipes',this.recipe.id]); 
   }
 }

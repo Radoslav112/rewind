@@ -1,11 +1,11 @@
 <div class="container">
-    <div class="content">
+    <div class="content" [ngClass]="setContainerStyle()">
         <div class="recipe-list">
             <div *ngFor="let rec of recipies" class="recipe">
-                <div class="recipe-name" [routerLink]="[rec.id]">{{rec.name}}</div>
+                <div class="recipe-name recipe-selected" (click)="onRecipeClicked(rec)">{{rec.name}}</div>
             </div>
         </div>
-        <div class="recipe">
+        <div *ngIf="recipeSelected" class="recipe">
             <router-outlet></router-outlet>
         </div>
     </div>
