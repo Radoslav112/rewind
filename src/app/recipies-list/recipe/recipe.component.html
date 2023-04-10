@@ -1,4 +1,4 @@
-<p>{{recipe.name}}</p>
+<h3>{{recipe.name}}</h3>
 <div class="ingredients">
     <p *ngFor="let product of recipe.ingredients">{{product.name}} {{product.quantity}}</p>
 </div>
@@ -7,4 +7,7 @@
 </div>
 <div>
     <button [routerLink]="['../edit',recipe.id]">Edit</button>
+</div>
+<div>
+    <button (click)="onPostClicked()">Post</button>
 </div>

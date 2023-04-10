@@ -16,6 +16,13 @@ import { AuthenticationService } from './services/authentication.service';
 import { AuthorizationGuard } from './services/authorization-guard';
 import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
 import { RecipeFilterPipe } from './recipies-list/recipe-filter.pipe';
+import { HttpClientModule } from '@angular/common/http';
+import { StoreModule, createFeature } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { RecipeListEffects } from './recipies-list/store/recipe-list.effects';
+import * as RecipeListReducer from './recipies-list/store/recipe-list.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -33,7 +40,11 @@ import { RecipeFilterPipe } from './recipies-list/recipe-filter.pipe';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    StoreModule.forFeature(createFeature({ name: 'feature', reducer: RecipeListReducer.recipeListReducer })),
+    EffectsModule.forRoot([RecipeListEffects]),
+    StoreDevtoolsModule.instrument({ logOnly: environment.production })
   ],
   providers: [
     RegisterService, 

@@ -1,8 +1,13 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { map, Subscription } from 'rxjs';
 import { Recipe } from '../models/recipe.model';
 import { RecipiesService } from '../services/recipies.service';
+import { Store } from '@ngrx/store';
+import { recipeListOppened } from './store/recipe-list.actions';
+import { selectRecipes } from './store/recipe-list.selectors';
+import { State } from './store/recipe-list.reducer';
 
 @Component({
   selector: 'app-recipes-list',
@@ -10,24 +15,36 @@ import { RecipiesService } from '../services/recipies.service';
   styleUrls: ['./recipes-list.component.css']
 })
 export class RecipiesListComponent implements OnInit, OnDestroy {
-  recipies = this.recipiesService.getRecipes();
+  recipes: Recipe[] | null = null;
   recipesSubscription?: Subscription;
   recipeSelected: boolean = false;
   selectedRecipeSubscription?: Subscription;
-  filter:string = '';
+  filter: string = '';
 
-  constructor(private recipiesService: RecipiesService, public activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(
+    private recipiesService: RecipiesService,
+    public activatedRoute: ActivatedRoute,
+    private router: Router,
+    private store: Store
+  ) { }
 
   ngOnInit(): void {
-    this.recipesSubscription = this.recipiesService.recipes$.subscribe({
+    this.store.select(selectRecipes).subscribe({
       next: (recipes) => {
-        this.recipies = recipes;
+        this.recipes = recipes;
       }
     })
+    this.store.dispatch(recipeListOppened({filter: ''}));
+
+    // this.recipesSubscription = this.recipiesService.recipes$.subscribe({
+    //   next: (recipes) => {
+    //     this.recipes = recipes;
+    //   }
+    // })
+    this.recipeSelected = false;
   }
 
   setContainerStyle() {
-    console.log(this.activatedRoute.url)
     return {
       'recipe-selected': this.recipeSelected === true,
       'recipe-not-selected': this.recipeSelected === false
@@ -36,7 +53,7 @@ export class RecipiesListComponent implements OnInit, OnDestroy {
 
   onRecipeClicked(recipe: Recipe) {
     this.recipeSelected = true;
-    this.router.navigate(['recipes',recipe.id])
+    this.router.navigate(['recipes', recipe.id])
   }
 
   ngOnDestroy(): void {

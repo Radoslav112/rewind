@@ -1,8 +1,9 @@
 <div class="container">
     <div class="input-container"><input type="text" [(ngModel)]="filter" class="input" placeholder="filter"></div>
     <div class="content" [ngClass]="setContainerStyle()">
-        <div class="recipe-list">
-            <div *ngFor="let rec of recipies | recipeFilter: filter" class="recipe">
+        <p *ngIf="recipes && recipes.length < 1">No recipes loaded</p>
+        <div class="recipe-list" *ngIf="recipes && recipes.length >= 1">
+            <div *ngFor="let rec of recipes | recipeFilter: filter | async" class="recipe">
                 <div class="recipe-name recipe-selected" (click)="onRecipeClicked(rec)">{{rec.name}}</div>
             </div>
         </div>
