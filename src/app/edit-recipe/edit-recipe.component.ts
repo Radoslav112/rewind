@@ -5,6 +5,8 @@ import { Subscription } from 'rxjs';
 import { Product } from '../models/product.model';
 import { Recipe } from '../models/recipe.model';
 import { RecipiesService } from '../services/recipies.service';
+import { Store } from '@ngrx/store';
+import { State } from '../recipies-list/store/recipe-list.reducer';
 
 @Component({
   selector: 'app-edit-recipe',
@@ -17,12 +19,25 @@ export class EditRecipeComponent implements OnInit {
   recipeSubscription?: Subscription;
   ingredients: Product[] = this.recipe.ingredients;
 
-  constructor(private route: ActivatedRoute, private recipeService: RecipiesService, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private recipeService: RecipiesService, 
+    private router: Router,
+    private store: Store<{ recipes: State }>
+    ) { }
 
   ngOnInit(): void {
-    this.recipe = this.recipeService.getRecipeByID(this.route.snapshot.params['id']);
+    this.recipeService.getRecipeByID(this.route.snapshot.params['id']).subscribe({
+      next: (recipe) =>{
+        this.recipe = recipe;
+      }
+    });
     this.route.params.subscribe((params:Params) => {
-      this.recipe = this.recipeService.getRecipeByID(params['id']);
+      this.recipeService.getRecipeByID(params['id']).subscribe({
+        next: (recipe) =>{
+          this.recipe = recipe;
+        }
+      });
       this.ingredients = this.recipe.ingredients;
     })
 

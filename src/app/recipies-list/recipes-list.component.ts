@@ -4,7 +4,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { map, Subscription } from 'rxjs';
 import { Recipe } from '../models/recipe.model';
 import { RecipiesService } from '../services/recipies.service';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { recipeListOppened } from './store/recipe-list.actions';
 import { selectRecipes } from './store/recipe-list.selectors';
 import { State } from './store/recipe-list.reducer';
@@ -25,15 +25,16 @@ export class RecipiesListComponent implements OnInit, OnDestroy {
     private recipiesService: RecipiesService,
     public activatedRoute: ActivatedRoute,
     private router: Router,
-    private store: Store
+    private store: Store<{ recipes: State }>
   ) { }
 
   ngOnInit(): void {
-    this.store.select(selectRecipes).subscribe({
+    this.store.pipe(select(selectRecipes)).subscribe({
       next: (recipes) => {
         this.recipes = recipes;
       }
     })
+
     this.store.dispatch(recipeListOppened({filter: ''}));
 
     // this.recipesSubscription = this.recipiesService.recipes$.subscribe({

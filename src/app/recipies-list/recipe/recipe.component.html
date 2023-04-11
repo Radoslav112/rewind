@@ -1,13 +1,19 @@
-<h3>{{recipe.name}}</h3>
-<div class="ingredients">
-    <p *ngFor="let product of recipe.ingredients">{{product.name}} {{product.quantity}}</p>
+<div *ngIf="(recipe$ | async) as recipe else loading">
+    {{ recipe | json }}
+    <h3>{{recipe.name}}</h3>
+    <div class="ingredients">
+        <p *ngFor="let product of recipe.ingredients">{{product.name}} {{product.quantity}}</p>
+    </div>
+    <div class="directions">
+        <p>{{recipe.directions}}</p>
+    </div>
+    <div>
+        <button [routerLink]="['../edit',recipe.id]">Edit</button>
+    </div>
+    <div>
+        <button (click)="onPostClicked()">Post</button>
+    </div>
 </div>
-<div class="directions">
-    <p>{{recipe.directions}}</p>
-</div>
-<div>
-    <button [routerLink]="['../edit',recipe.id]">Edit</button>
-</div>
-<div>
-    <button (click)="onPostClicked()">Post</button>
-</div>
+<ng-template #loading>
+    <h2>Loading...</h2>
+</ng-template>

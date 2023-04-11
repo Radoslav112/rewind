@@ -1,9 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { Observable, Subscription } from 'rxjs';
 import { Recipe } from 'src/app/models/recipe.model';
 import { RecipiesService } from 'src/app/services/recipies.service';
+import * as RecipeActions from 'src/app/recipies-list/store/recipe-list.actions'
+import { AppState, selectSelectedRecipes } from '../store/recipe-list.selectors';
 
 @Component({
   selector: 'app-recipe',
@@ -11,33 +14,27 @@ import { RecipiesService } from 'src/app/services/recipies.service';
   styleUrls: ['./recipe.component.css']
 })
 export class RecipeComponent implements OnInit, OnDestroy {
-  recipe: Recipe = new Recipe(0, '', [], '');
+  recipe$?: Observable<Recipe | null>;
   selectedRecipeSubscription?: Subscription;
   
   constructor(
     private route: ActivatedRoute, 
     private recipeService: RecipiesService,
-    private http: HttpClient) { }
+    private http: HttpClient,
+    private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    const rec = this.recipeService.getRecipeByID(this.route.snapshot.params['id']);
-    this.recipeService.updateRecipe(rec);
-
+    this.recipe$ = this.store.select(selectSelectedRecipes)
+    this.store.dispatch(RecipeActions.recipeListSelectRecipe(this.route.snapshot.params['id']))
     this.route.params.subscribe((params:Params) => {
-      this.recipe = this.recipeService.getRecipeByID(params['id']);
-    })
-
-    this.selectedRecipeSubscription = this.recipeService.selectedRecipe$.subscribe({
-      next: (recipe) => {
-        if(recipe) this.recipe = recipe;
-      }
+      this.store.dispatch(RecipeActions.recipeListSelectRecipe({ id: +params['id'] }))
     })
   }
 
   onPostClicked() {
     this.http.post(
       'https://recipeapi-a1e7f-default-rtdb.firebaseio.com/recipe.json',
-      this.recipe
+      this.recipe$
     ).subscribe(responseData => {
       console.log(responseData);
     })

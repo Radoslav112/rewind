@@ -29,15 +29,6 @@ export class RecipiesService {
         return this._selectedRecipe$.asObservable();
     }
 
-    public getRecipeByID(id: string) {
-        // const res = this.recipes$.getValue().find(recipe => {
-        //     return recipe.id===+id
-        // })       // return is needed because of curly braces
-
-        const res = this._recipes$.getValue().find(recipe => recipe.id === +id) // here no return is needed
-        return res ? res : new Recipe(0, '', [], '');
-    }
-
     public updateRecipe(recipe: Recipe) {
         let rec = this._recipes$.getValue();
         const index = rec.findIndex((r) => r.id === recipe.id);
@@ -65,9 +56,9 @@ export class RecipiesService {
                     for (const key in responseData) {
                         if (responseData.hasOwnProperty(key)) {
                             const ingredients = [];
-                            for (const ingr in responseData[key]._ingredients) {
-                                ingredients.push(new Product((ingr as any)._quantity, (ingr as any)._name))
-                            }
+                        for(const ingredientKey in (responseData[key]._ingredients)) {
+                            ingredients.push(new Product((responseData[key]._ingredients[ingredientKey])._quantity,responseData[key]._ingredients[ingredientKey]._name))
+                        }
                             const rec = new Recipe(responseData[key]._id, responseData[key]._name, ingredients, responseData[key]._directions)
                             recipeArray.push(rec);
                         }
@@ -75,5 +66,27 @@ export class RecipiesService {
 
                     return recipeArray;
                 }))
+    }
+
+    public getRecipeByID(id:Number) : Observable<Recipe> {
+                                //https://recipeapi-a1e7f-default-rtdb.firebaseio.com/recipe/-NRbVf7KvpLTvsKUOW78/_id
+        return this.http.get<any>(`https://recipeapi-a1e7f-default-rtdb.firebaseio.com/recipe.json?orderBy="_id"&equalTo=${id}`)
+        .pipe(
+            map(responseData => {
+                let recipe: Recipe = new Recipe(0,"",[],"");
+
+                for (const key in responseData) {
+                    if (responseData.hasOwnProperty(key)) {
+                        const ingredients = [];
+                        for(const ingredientKey in (responseData[key]._ingredients)) {
+                            ingredients.push(new Product((responseData[key]._ingredients[ingredientKey])._quantity,responseData[key]._ingredients[ingredientKey]._name))
+                        }
+                        recipe = new Recipe(responseData[key]._id, responseData[key]._name, ingredients, responseData[key]._directions);
+                    }
+                }
+
+                return recipe;
+            })
+        )
     }
 }

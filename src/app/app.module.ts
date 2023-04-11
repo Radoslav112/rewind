@@ -42,7 +42,7 @@ import { environment } from 'src/environments/environment';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    StoreModule.forFeature(createFeature({ name: 'feature', reducer: RecipeListReducer.recipeListReducer })),
+    StoreModule.forRoot({ recipes: RecipeListReducer.recipeListReducer }),
     EffectsModule.forRoot([RecipeListEffects]),
     StoreDevtoolsModule.instrument({ logOnly: environment.production })
   ],
