@@ -28,8 +28,7 @@ const initialState: State = {
 
 export const recipeListReducer = createReducer(
     initialState,
-    on(RecipeListActions.recipeListOppened, (state)=>{
-        // load recipes
+    on(RecipeListActions.recipeListLoading, (state)=>{
         return {
             ...state,
             recipes:{

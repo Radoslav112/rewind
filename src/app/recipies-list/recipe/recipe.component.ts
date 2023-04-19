@@ -25,7 +25,6 @@ export class RecipeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.recipe$ = this.store.select(selectSelectedRecipes)
-    this.store.dispatch(RecipeActions.recipeListSelectRecipe(this.route.snapshot.params['id']))
     this.route.params.subscribe((params:Params) => {
       this.store.dispatch(RecipeActions.recipeListSelectRecipe({ id: +params['id'] }))
     })

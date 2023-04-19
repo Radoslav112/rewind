@@ -1,5 +1,4 @@
 <div *ngIf="(recipe$ | async) as recipe else loading">
-    {{ recipe | json }}
     <h3>{{recipe.name}}</h3>
     <div class="ingredients">
         <p *ngFor="let product of recipe.ingredients">{{product.name}} {{product.quantity}}</p>

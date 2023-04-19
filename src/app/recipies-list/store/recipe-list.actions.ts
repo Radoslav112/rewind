@@ -1,12 +1,12 @@
 import { createAction, props } from "@ngrx/store";
 import { Recipe } from "src/app/models/recipe.model";
 
-export const recipeListOppened = createAction(
-    '[recipe-list]oppened',
+export const recipeListLoading = createAction(
+    '[recipe-list]loading',
     props<{ filter: string}>()
 )
 export const apiGetRecipesSuccessful = createAction(
-    '[recipes API]loaded successfuly',
+    '[recipes API]recipes loaded successfuly',
     props<{ recipes: Recipe[]}>()
 )
 export const recipeListSelectRecipe = createAction(
@@ -14,6 +14,6 @@ export const recipeListSelectRecipe = createAction(
     props<{id: Number}>()
 )
 export const apiGetRecipeSuccessful = createAction(
-    '[recipe API]select recipe',
+    '[recipe API]recipe selected successfuly',
     props<{ recipe: Recipe }>()
 )

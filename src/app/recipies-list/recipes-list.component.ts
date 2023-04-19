@@ -5,7 +5,7 @@ import { map, Subscription } from 'rxjs';
 import { Recipe } from '../models/recipe.model';
 import { RecipiesService } from '../services/recipies.service';
 import { Store, select } from '@ngrx/store';
-import { recipeListOppened } from './store/recipe-list.actions';
+import { recipeListLoading } from './store/recipe-list.actions';
 import { selectRecipes } from './store/recipe-list.selectors';
 import { State } from './store/recipe-list.reducer';
 
@@ -35,13 +35,7 @@ export class RecipiesListComponent implements OnInit, OnDestroy {
       }
     })
 
-    this.store.dispatch(recipeListOppened({filter: ''}));
-
-    // this.recipesSubscription = this.recipiesService.recipes$.subscribe({
-    //   next: (recipes) => {
-    //     this.recipes = recipes;
-    //   }
-    // })
+    this.store.dispatch(recipeListLoading({filter: ''}));
     this.recipeSelected = false;
   }
 
