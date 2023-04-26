@@ -1,0 +1,18 @@
+<ng-container *ngIf="(selectedRecipe$ | async) as recipe else loading">
+    <h3>{{recipe.data?.name}}</h3>
+    <div class="ingredients">
+        <p *ngFor="let product of recipe.data?.ingredients">{{product.name}} {{product.quantity}}</p>
+    </div>
+    <div class="directions">
+        <p>{{recipe.data?.directions}}</p>
+    </div>
+    <div>
+        <button [routerLink]="['../edit',recipe.data?.id]">Edit</button>
+    </div>
+    <div>
+        <button (click)="onPostClicked()">Post</button>
+    </div>
+</ng-container>
+<ng-template #loading>
+    <h2>Loading...</h2>
+</ng-template>

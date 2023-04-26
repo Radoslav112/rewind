@@ -1,0 +1,15 @@
+<div class="container" *ngIf="recipes$ | async as recipes">
+    {{ recipes | json }}
+    <div class="input-container"><input type="text" [(ngModel)]="filter" class="input" placeholder="filter"></div>
+    <div class="content" [ngClass]="setContainerStyle()">
+        <p *ngIf="recipes.data && recipes.data.length < 1">No recipes loaded</p>
+        <div class="recipe-list" *ngIf="recipes && recipes.data!.length >= 1">
+            <div *ngFor="let rec of recipes.data! | recipeFilter: filter | async" class="recipe">
+                <div class="recipe-name recipe-selected" (click)="onRecipeClicked(rec)">{{rec.name}}</div>
+            </div>
+        </div>
+        <div *ngIf="recipeSelected" class="recipe">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

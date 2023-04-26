@@ -1,0 +1,38 @@
+<form class="form" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <input class="recipe-name" formControlName="recipeName"> 
+    <!-- <table>
+        <tr *ngFor="let ingredient of ingredients">
+            <td><button>X</button></td>
+            <td><input value="{{ingredient.name}}" class="left"></td>
+            <td><input value="{{ingredient.quantity}}" class="right"></td>
+        </tr>
+        <tr>
+            <td><button (click)="onAddIngredient()">add</button></td>
+        </tr>
+    </table> -->
+
+    <div formArrayName="recipeIngredients">
+        <h3>Ingrediants</h3>
+        <table>
+            <tr *ngFor="let ingredientControl of getRecipeIngredients().controls; let i = index">
+                <div [formGroup]="ingredientControl">
+                    <td><button type="button" (click)="onDeleteIngredient(ingredientControl)">X</button></td>
+                    <td><input type="text" formControlName="ingredientName"></td>
+                    <td><input type="text" formControlName="ingredientQuantity"></td>
+                </div>
+            </tr>
+            <tr><td><button type="button" (click)="onAddIngredient()">add</button></td></tr>
+        </table>
+        
+    </div>
+    
+    <div class="description-container">
+        <textarea 
+        class="description" 
+        rows="10" 
+        formControlName="description"></textarea>
+    </div>
+    <div class="submit-button">
+        <button>Save</button>
+    </div>
+</form>

@@ -1,0 +1,40 @@
+.form {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto auto auto auto;
+}
+
+.recipe-name {
+    grid-column: 1 / 3;
+}
+
+.ingredients {
+    grid-column: 1/3;
+    grid-row: 2/3;
+    display: grid;
+    grid-template-columns: 20px auto auto;
+}
+
+.left {
+    grid-column: 2 / 3;
+}
+
+.right{
+    grid-column: 3 / 4;
+}
+
+.description-container {
+    grid-column: 1/3;
+    grid-row: 3/4;
+    height: fit-content;
+}
+
+.description {
+    height: fit-content;
+    width: 100%;
+}
+
+.submit-button {
+    grid-column: 1/2;
+    grid-row: 4/5;
+}

@@ -1,0 +1,36 @@
+.container {
+  display: grid;
+}
+
+.header {
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #072121;
+}
+
+.li-float-l {
+  float: left;
+}
+
+.li-float-r {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: #eee;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #1E2929;
+}

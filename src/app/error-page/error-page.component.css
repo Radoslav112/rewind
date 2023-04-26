@@ -1,0 +1,27 @@
+.background-error {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 90vh;
+  }
+
+.form {
+    background-color: #072121;
+    border-radius: 20px;
+    box-sizing: border-box;
+    height:fit-content;
+    padding: 20px;
+    width: 320px;
+}
+
+.error-404 {
+    font-size: 40px;
+    color: #618383;
+    text-align: center;
+}
+
+.error-text {
+    font-size: 24px;
+    color: #eee;
+    text-align: center;
+}
