@@ -1,4 +1,5 @@
 <div class="container" *ngIf="recipes$ | async as recipes">
+    {{ recipes | json }}
     <div class="input-container"><input type="text" [(ngModel)]="filter" class="input" placeholder="filter"></div>
     <div class="content" [ngClass]="setContainerStyle()">
         <p *ngIf="recipes.data && recipes.data.length < 1">No recipes loaded</p>
